@@ -1,0 +1,16 @@
+<div style="margin-left: 40px">
+    <p>
+    <br>
+    Comment: {{ comment.comment }}
+    <br>
+    Author: {{ comment.author }}
+    <br>
+    Date: {{ comment.date }}
+    </p>
+    Reply to comment
+    {% include "comment/form.html" with object_id=comment.id model_name='article.Comments' %}
+
+    {% for ccomment in comment.comments.all %}
+        {% include "comment/details.html" with comment=ccomment %}
+    {% endfor %}
+</div>

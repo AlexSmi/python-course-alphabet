@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% block title %} PROFILE {% endblock %} 
+{% block content %}
+<table class="table table-bordered table-sm" id="dev-table">
+  <thead class="table-info">
+    <tr>
+      <th>NAME</th>
+      <th>BIO</th>
+      <th>LOCATION</th>
+    </tr>
+  </thead>
+  <tbody class="">
+    <tr>
+      <td>{{ profile.user.username }}</td>
+      <td>{{ profile.bio }}</td>
+      <td>{{ profile.location }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

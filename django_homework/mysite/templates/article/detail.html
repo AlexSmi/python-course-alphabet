@@ -1,0 +1,39 @@
+{% extends "base.html" %} 
+{% load article_tags %}
+{% block content %}
+{% load tz %}
+<div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <a href="{% url 'index' %}">Comeback to page list articles
+    </a>
+
+    {% get_current_timezone as TIME_ZONE %}
+    {% timezone "Europe/Kiev" %}
+        <h4>Kiev: {{ date | localtime | date:'M d, Y H:i' }}</h4>
+    {% endtimezone %}
+    <p>Author: {{ article.author }}</p>
+    <br>
+    <p>{{ title_name | title }}: {{ article.title }}</p>
+    <br>
+    <p>New Title: {% add_random_number  article.title %}</p>
+    <hr>
+    {{ description_name | title }}: {{ article.description| safe }}
+    <hr>
+    <br>
+    <a href="{% url 'update' article.id %}" class="btn btn-primary">Update</a>
+    <a href="{% url 'delete' article.id %}" class="btn btn-danger">Delete</a>
+    <hr id="line">
+        {% include "comment/form.html" with object_id=article.id model_name='article.Article' %}
+    <hr id="line">
+</div>
+{% for comment in article.comments.all %}
+    {% include "comment/details.html" with comment=comment %}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="{% url 'update' form.instance.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="PRESS" class="btn btn-success">
+    <button class="btn btn-secondary">Cancel</button>
+</form>
+{% endblock %}

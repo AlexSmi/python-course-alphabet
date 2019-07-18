@@ -1,0 +1,10 @@
+#content {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#line {
+    border: none; 
+    background-color: red; 
+    color: red; 
+    height: 2px;
+}

@@ -1,0 +1,8 @@
+
+<form action="{% url 'add-comment' %}" method="post">
+    {% csrf_token %}
+    <textarea name="comment"></textarea>
+    <input type="hidden" name="object_id" value="{{ object_id }}">
+    <input type="hidden" name="model_name" value="{{ model_name }}">
+    <button type="submit" class="btn btn-success">Press</button>
+</form>
