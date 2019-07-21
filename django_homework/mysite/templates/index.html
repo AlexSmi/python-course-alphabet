@@ -1,28 +1,27 @@
-{% extends "base.html" %} 
-{% block title %} Index {% endblock %} 
+{% extends "base.html" %}
+  {% block title %} Index {% endblock %}
 {% block content %}
 <nav class="navbar navbar-inverse" role="navigation">
-    <h1>{{ page_title }}</h1>
-    <div>
-        {% include "start.html" %}
-        <a
-            href="{% url 'create' %}"
-            class="btn btn-primary btn-lg active"
-            role="button"
-            aria-pressed="true"
-            >Create article</a
-        >
-    </div>
+  <h1>{{ page_title }}</h1>
+  <div>
+    {% include "start.html" %}
+    <a
+      href="{% url 'create' %}"
+      class="btn btn-primary btn-lg active"
+      role="button"
+      aria-pressed="true"
+      >Create article</a
+    >
+  </div>
 </nav>
 <hr />
 <br />
 {% for article in articles %}
-    <u>
-        <a href="{% url 'detail' article.id%}">Title: {{ article.title }}</a>
-    </u>
-    <br />
-    Description:
-    {{ article.description | safe }}
-    <hr />
-{% endfor %}
-{% endblock %}
+<u>
+  <a href="{% url 'detail' article.id%}">Title: {{ article.title }}</a>
+</u>
+<br />
+Description:
+{{ article.description | safe }}
+<hr />
+{% endfor %} {% endblock %}

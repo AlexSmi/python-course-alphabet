@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path, include
-from account.views import ProfileDetailView, StartView, SignUp
+from account.views import ProfileDetailView, StartView, SignUp, update_profile
 from article.views import (
     IndexView,
     ArticleCreateView,
@@ -58,6 +58,11 @@ urlpatterns = [
         'account/profile/<int:profile_id>',
         ProfileDetailView.as_view(),
         name='profile'
+    ),
+    path(
+        'account/update/',
+        update_profile,
+        name='profile_update'
     ),
     path('account/', include('django.contrib.auth.urls')),
     path('', StartView.as_view(), name='start'),

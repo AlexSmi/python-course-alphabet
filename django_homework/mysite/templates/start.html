@@ -5,9 +5,7 @@
   Hi {{ user.username }} - 
   <a href="{% url 'logout' %}">Logout</a>
   <br>
-  {% comment %}
-  <a href="{% url 'profile' %}">Profile</a>
-  {% endcomment %}
+  <a href="{% url 'profile_update' %}">Profile</a>
 {% else %}
   You're not logged in
   <a href="{% url 'login' %}">Login</a>
