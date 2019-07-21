@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     # 'modeltranslation',
+    'django.contrib.sites',
+    'disqus',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +93,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Login & Logout
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'start'
+
+# Disqus
+DISQUS_API_KEY = get_env_variable('DISQUS_API_KEY')
+DISQUS_WEBSITE_SHORTNAME = 'my_site'
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
