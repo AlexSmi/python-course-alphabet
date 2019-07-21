@@ -12,9 +12,9 @@ from django.views.generic import (
     View
 )
 
-from article.models import Article, Comments
-from article.mixins import FormMessageMixin
-from article.forms import ArticleForm, CommentsForm
+from .models import Article, Comments
+from .mixins import FormMessageMixin
+from .forms import ArticleForm, CommentsForm
 
 
 class IndexView(ListView):

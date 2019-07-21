@@ -1,11 +1,15 @@
+{% load tz %}
 <div style="margin-left: 40px">
+    
     <p>
     <br>
     Comment: {{ comment.comment }}
     <br>
     Author: {{ comment.author }}
     <br>
-    Date: {{ comment.date }}
+    {% timezone "Europe/Kiev" %}
+        Date: {{ comment.date | localtime | date:'M d, Y H:i' }}
+    {% endtimezone %}
     </p>
     Reply to comment
     {% include "comment/form.html" with object_id=comment.id model_name='article.Comments' %}

@@ -14,4 +14,6 @@ virtualenv
 .env
 env
 .venv
+
 .DS_Store
+.vscode
