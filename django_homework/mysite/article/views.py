@@ -1,4 +1,4 @@
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse
 from django.utils import timezone
 from django.http import HttpResponseRedirect
@@ -66,11 +66,25 @@ class ArticleDetailView(DetailView):
     model = Article
     template_name = 'article/detail.html'
     pk_url_kwarg = 'article_id'
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        list_exam = context['article'].comments.all()
+        paginator = Paginator(list_exam, self.paginate_by)
+        page = self.request.GET.get('page')
+
+        try:
+            file_exams = paginator.page(page)
+        except PageNotAnInteger:
+            file_exams = paginator.page(1)
+        except EmptyPage:
+            file_exams = paginator.page(paginator.num_pages)
+
+        context['list_exams'] = file_exams
+
         context['date'] = timezone.now()
-        context['comments'] = Comments.objects.all()
+
         for field in context['article']._meta.get_fields():
             if field.name == 'title':
                 context['title_name'] = field.name

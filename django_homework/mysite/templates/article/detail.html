@@ -33,7 +33,30 @@
         {% include "comment/form.html" with object_id=article.id model_name='article.Article' %}
     <hr id="line">
 </div>
-{% for comment in article.comments.all %}
+{% comment %}
+    {% for comment in article.comments.all %}
+        {% include "comment/details.html" with comment=comment %}
+    {% endfor %}
+
+{% endcomment %}
+{% for comment in list_exams %}
     {% include "comment/details.html" with comment=comment %}
 {% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if list_exams.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ list_exams.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ list_exams.number }} of {{ list_exams.paginator.num_pages }}.
+        </span>
+
+        {% if list_exams.has_next %}
+            <a href="?page={{ list_exams.next_page_number }}">next</a>
+            <a href="?page={{ list_exams.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}
