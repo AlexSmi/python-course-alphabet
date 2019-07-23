@@ -50,12 +50,9 @@ class SignUp(CreateView):
     def form_valid(self, form):
         # Create user
         created_user = form.save()
-        # Create profile
-        profile = Profile.objects.create(user=created_user)
-        # Authenticate User
         authenticated_user = authenticate(
             username=form.cleaned_data.get('username'),
             password=form.cleaned_data.get('password1'),
         )
         login(self.request, authenticated_user)
-        return redirect('profile', profile.id)
+        return redirect('profile', created_user.profile.user_id)
