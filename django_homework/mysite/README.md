@@ -9,8 +9,8 @@
 # 4. Run command in terminal 
 `:$ make init`
 
-# 5. After install all docker container will be run, then execude command 
-`:$ make up`
+# 5. After install all docker container will be run, then execute command 
+`$ make up`
    End
 
 # ERROR
