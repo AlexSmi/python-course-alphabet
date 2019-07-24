@@ -14,9 +14,9 @@
 
 # 6. At last, you must input correct working url: 
 `localhost`
-   End
 
-# ERROR
+
+# If ERROR
 If you use Ubuntu and have error like this: Couldn’t connect to Docker daemon at http+docker://localhost – is it running
 How to fix: 
 1. Create the docker group.
