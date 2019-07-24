@@ -11,6 +11,9 @@
 
 # 5. After install all docker container will be run, then execute command 
 `$ make up`
+
+# 6. At last, you must input correct working url: 
+`localhost`
    End
 
 # ERROR
